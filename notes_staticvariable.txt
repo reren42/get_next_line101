@@ -1,0 +1,18 @@
+1. Statik Değişken Nedir?
+static anahtar kelimesiyle tanımlanan değişkenlerdir.
+Bu değişkenler, fonksiyonlar veya bloklar arasında değerlerini korur.
+Statik değişkenler yalnızca ilk defa kullanıldıklarında bellekte ayrılır ve değerleri program çalıştığı sürece korunur.
+
+2. Statik Değişkenlerin Özellikleri:
+Yerel (local) ve Global (global) Statik Değişkenler:
+Yerel statik değişken: Fonksiyon içinde tanımlanır, ancak fonksiyon çağrıları arasında değerini korur. 
+Yalnızca fonksiyon içinde erişilebilir.
+Global statik değişken: Dosya düzeyinde tanımlanır ve sadece o dosya içinde kullanılabilir.
+Değerler yalnızca programın sonlanana kadar saklanır, her fonksiyon çağrısında yeniden başlatılmaz.
+İlk değer ataması: Eğer bir değer verilmezse, C dilinde varsayılan olarak 0 ile başlar.
+
+6. Dikkat Edilmesi Gerekenler:
+Statik değişkenler, yalnızca ilk değer atandığında belleğe alınır ve programın çalışması boyunca bu değeri tutar. 
+Bu, belirli durumlarda bellek tüketimini artırabilir.
+Fonksiyonlar arasında paylaşılan statik değişkenlerin yanlış yönetilmesi, beklenmeyen sonuçlara yol açabilir.
+

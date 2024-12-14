@@ -1,0 +1,56 @@
+
+KREMŞANTİ VE ŞAMPANYA
+
+---
+
+**Proje Açıklaması:**
+
+Bu projede, `get_next_line()` fonksiyonunu yazmanız gerekiyor. Fonksiyon, bir dosya tanıtıcısına (file descriptor) 
+işaret eden metin dosyasını satır satır okur. Fonksiyon, okunan satırı döndürmeli; eğer okunacak bir şey yoksa
+veya bir hata oluşursa `NULL` döndürmelidir. Dönülen satır, dosyanın sonuna gelindiğinde son bir `\n` karakteri içermemelidir, 
+ancak genelde satır sonunda bir `\n` karakteri olmalıdır. 
+Fonksiyon, dosya okuma ve standart girişten okuma durumlarında doğru çalışmalıdır.
+
+**Fonksiyon Özellikleri:**
+- Her çağrıldığında bir satır döndürmeli.
+- Dosya sonuna gelindiğinde veya bir hata durumunda `NULL` döndürmeli.
+- Başlık dosyasında `get_next_line()` fonksiyonunun prototipi bulunmalıdır.
+- Yardımcı fonksiyonlar `get_next_line_utils.c` dosyasına eklenmelidir.
+
+**Derleyici Seçenekleri:**
+- `get_next_line()` fonksiyonunda dosya okuma işlemi yapacağınız için 
+derleyiciye `-D BUFFER_SIZE=n` seçeneğini eklemeniz gerekmektedir. Bu seçenek, `read()` fonksiyonu için tampon boyutunu tanımlar.
+- Tampon boyutunun değeri projeyi test eden kişiler tarafından değiştirilecektir. 
+Derleme işlemi, `-D BUFFER_SIZE` bayrağı ile veya bu bayrak olmadan yapılmalıdır.
+- Derleme komutu şu şekilde olmalıdır:  
+  `cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <dosyalar>.c`
+
+**Yasaklar ve Kısıtlamalar:**
+- Bu projede **libft** kütüphanenizi kullanmanıza izin verilmez.
+- **lseek()** fonksiyonu yasaktır.
+- **Global değişkenler** kullanmak yasaktır.
+
+**Diğer Notlar:**
+- `get_next_line()` fonksiyonu, her çağrıldığında mümkün olduğunca az okuma yapmalıdır. 
+Bir satır okunduğunda, o satırı döndürmelidir.
+- Eğer BUFFER_SIZE değeri çok büyük (örneğin 9999), küçük (1) veya 
+çok büyük (10000000) olursa fonksiyonun doğru çalışıp çalışmadığını test etmelisiniz.
+- Dosya okurken, dosya tanıtıcısına işaret eden dosya değişirse veya `read()` dosyanın sonuna ulaşmadan önce dosya değişirse, 
+`get_next_line()` fonksiyonu tanımsız bir davranış sergiler.
+- İkili dosya okuma durumunda da fonksiyonun tanımsız bir davranış göstermesi beklenir, 
+ancak bunu ele almak için mantıklı bir yol uygulanabilir.
+
+---
+
+KAFESTE ASLAN VAR
+
+---
+
+
+**kullanılması hedeflenen yardımcı fonksiyonlar:
+
+*strlen 
+*strdup
+*strjoin
+*substr
+*free(opsiyonel) **satır sayısı gerektirirse.
