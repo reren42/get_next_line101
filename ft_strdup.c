@@ -6,7 +6,7 @@
 /*   By: reren <reren@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:48:32 by reren             #+#    #+#             */
-/*   Updated: 2024/12/15 02:53:21 by reren            ###   ########.fr       */
+/*   Updated: 2024/12/16 12:27:17 by reren            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*erjhon_substr(const char *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	str = malloc(len + 1, sizeof(char));
+	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -86,6 +86,23 @@ char	*erjhon_substr(const char *s, unsigned int start, size_t len)
 	}
 	return (str);
 }
+    
+    char	*erjhon_strchr(char *s, int c)
+    {
+        
+        size_t i;
+        if(!s)
+            return(NULL);
+        i = 0;
+        while(s[i])
+        {
+            if(s[i] == (char)c)
+                return(&c);
+            i++;
+        }
+        return(NULL);
+    }
+
 int main()
 {  
     printf("%s", erjhon_strjoin("ercan", "eren"));   
