@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ger_next_line_ultis.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reren <reren@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:48:32 by reren             #+#    #+#             */
-/*   Updated: 2024/12/16 12:27:17 by reren            ###   ########.fr       */
+/*   Updated: 2024/12/17 18:03:16 by reren            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-size_t erjhon_strlen(char const *s)
+size_t ft_strlen(char const *s)
 {
     size_t length;
     length = 0;
@@ -26,12 +26,12 @@ size_t erjhon_strlen(char const *s)
     printf("Sonuc:%u\n", length);
     return(length);
 }
-char	*erjhon_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
     char *res;
     char *res2;
     
-    res = malloc(erjhon_strlen(s) + 1);
+    res = malloc(ft_strlen(s) + 1);
     res2 = res;
     while (*s)
     {
@@ -42,12 +42,12 @@ char	*erjhon_strdup(const char *s)
     *res = '\0';
     return (res2);
 }
-char *erjhon_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
     char *s3;
     if (!s1 || !s2)
         return NULL;
-    s3 = malloc(sizeof(char) * (erjhon_strlen(s1) + erjhon_strlen(s2) + 1));
+    s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
     if (!s3)
         return NULL;
     char *start;
@@ -64,7 +64,7 @@ char *erjhon_strjoin(char const *s1, char const *s2)
     return start;
 }
 
-char	*erjhon_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*str;
@@ -87,23 +87,19 @@ char	*erjhon_substr(const char *s, unsigned int start, size_t len)
 	return (str);
 }
     
-    char	*erjhon_strchr(char *s, int c)
-    {
+char	*ft_strchr(char *s, int c)
+{
         
-        size_t i;
-        if(!s)
-            return(NULL);
-        i = 0;
-        while(s[i])
-        {
-            if(s[i] == (char)c)
-                return(&c);
-            i++;
-        }
+    size_t i;
+    if(!s)
         return(NULL);
+    i = 0;
+    while(s[i])
+    {
+        if(s[i] == (char)c)
+            return(&c);
+        i++;
     }
-
-int main()
-{  
-    printf("%s", erjhon_strjoin("ercan", "eren"));   
+    return(NULL);
 }
+

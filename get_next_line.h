@@ -6,7 +6,7 @@
 /*   By: reren <reren@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:50:48 by reren             #+#    #+#             */
-/*   Updated: 2024/12/16 12:26:02 by reren            ###   ########.fr       */
+/*   Updated: 2024/12/17 18:03:43 by reren            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 #include <stddef.h>
 
-size_t erjhon_strlen(char const *s);
-char	*erjhon_strdup(const char *s);
-char *erjhon_strjoin(char const *s1, char const *s2);
-char	*erjhon_substr(const char *s, unsigned int start, size_t len);
-char	*erjhon_strchr(const char *s, int c);
+size_t ft_strlen(char const *s);
+char	*ft_strdup(const char *s);
+char *ft_strjoin(char const *s1, char const *s2);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strchr(const char *s, int c);
 
 
 #endif
