@@ -6,11 +6,10 @@
 /*   By: reren <reren@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:48:32 by reren             #+#    #+#             */
-/*   Updated: 2024/12/17 18:03:16 by reren            ###   ########.fr       */
+/*   Updated: 2024/12/17 18:07:21 by reren            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -87,9 +86,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (str);
 }
     
-char	*ft_strchr(char *s, int c)
-{
-        
+char    *ft_strchr(char *s, int c)
+{   
     size_t i;
     if(!s)
         return(NULL);
