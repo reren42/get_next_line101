@@ -6,14 +6,35 @@
 /*   By: reren <reren@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:35:55 by reren             #+#    #+#             */
-/*   Updated: 2024/12/29 21:48:13 by reren            ###   ########.fr       */
+/*   Updated: 2024/12/30 11:21:31 by reren            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
+
+static char	*ft_warden(char *current)
+{
+	char	*new;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (current[i] != '\0' && current[i] != '\n')
+		i++;
+	if (current[i] == '\0')
+		return (ft_liberty(current, NULL));
+	new = (char *)malloc((ft_strlen(current) - i) * sizeof(char));
+	if (!new)
+		return (ft_liberty(current, NULL));
+	j = 0;
+	while (current[++i])
+		new[j++] = current[i];
+	new[j] = '\0';
+	ft_liberty(current, NULL);
+	return (new);
+}
 
 char	*ft_attach(char *current, char *buff)
 {
@@ -36,26 +57,25 @@ char	*ft_attach(char *current, char *buff)
 
 static char	*ft_read(int fd, char *current)
 {
-	char	*puff;
-	ssize_t	puffer_current;
+	char	*buff;
+	ssize_t	buffer_current;
 
-	puff = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!puff)
-		return (ft_liberty(puff, NULL));
-	puffer_current = 1;
-	while (puffer_current > 0 && !ft_strchr(current, '\n'))
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (ft_liberty(current, NULL));
+	buffer_current = 1;
+	while (buffer_current > 0 && !ft_strchr(current, '\n'))
 	{
-		puffer_current = read(fd, puff, BUFFER_SIZE);
-		if (puffer_current == -1)
-			return (ft_liberty(current, puff));
-		puff[puffer_current] = '\0'; // burada bokluk var
-		current = ft_attach(current, puff);
+		buffer_current = read(fd, buff, BUFFER_SIZE);
+		if (buffer_current = -1)
+			return (ft_liberty(current, buffer_current));
+		buff[buffer_current] = '\0';
+		current = ft_attach(current, buff);
 		if (!current)
-			return (ft_liberty(current, puff));
+			return (ft_liberty(current, buffer_current));
 	}
-	free(puff);
+	ft_liberty(NULL, buffer_current);
 	return (current);
-    printf("A\n");
 }
 
 static char	*ft_remove(char *current)
@@ -65,14 +85,13 @@ static char	*ft_remove(char *current)
 	size_t	i;
 
 	i = 0;
-	if (current[i] == '\0')
+	if (current[0] == '\0')
 		return (NULL);
 	while (current[i] != '\n' && current[i] != '\0')
-		// i kaç karakter olduğunu gösterecek
 		i++;
 	if (current[i] == '\n')
 		i++;
-	line = malloc(sizeof(char) * (i + 1));
+	line = (char *)malloc(sizeof(char) * (i + 1));
 	if (!line)
 		return (NULL);
 	j = 0;
@@ -89,42 +108,21 @@ static char	*ft_remove(char *current)
 
 char	*get_next_line(int fd)
 {
-	static char	*current = NULL;
-	char		*line;
+	static char *current;
+	char *line;
 
-	if (current == NULL)
-	{
-		current = malloc(1);
-		current[0] = '\0';
-	}
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (0 < fd || BUFFER_SIZE <= 0)
 		return (NULL);
-        
 	current = ft_read(fd, current);
 	if (!current)
 		return (NULL);
-	line = ft_remove(current);
+	line = ft_remover(current);
 	if (!line)
 	{
 		free(current);
 		current = NULL;
 		return (NULL);
 	}
-	current = (char *)ft_strlen(current); // burada bokluk var
+	current = ft_warden(current);
 	return (line);
-}
-
-#include <fcntl.h>
-
-int main()
-{
-    int fd = open("asdf", O_RDWR, 777);
-    char *q;
-while((q=get_next_line(fd)) != NULL)
-{
-    printf("%s",q);
-    free(q);
-}
-close(fd);
-
 }
